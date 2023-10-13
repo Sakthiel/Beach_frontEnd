@@ -3,14 +3,14 @@ import {createBrowserRouter , RouterProvider ,createRoutesFromElements , Route} 
 import Show from "./show/Show";
 import Layout from "./layout/Layout";
 import NotFound from "./NotFound"
+import Login from "./login/Login";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path = "/" element = {<Layout/>}>
-      <Route index element = {<MovieList/>}/>
-      <Route path = "/show" element = {<Show/>}/>
-
-
+      <Route index element = {<MovieList />}/>
+      <Route path = "/show/:movieId/:date" element = {<Show/>}/>
+      <Route path = "/login" element = {<Login/>}/>
       <Route path="*" element = {<NotFound/>}/>
     </Route>
   )

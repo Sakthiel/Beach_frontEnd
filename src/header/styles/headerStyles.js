@@ -28,5 +28,12 @@ export default makeStyles((theme) => ({
       },
       linkHover: {
         color: '#ff5733',
-      }
+      },
+      logoutLink: {
+        display: 'flex',
+        justifyContent: "space-between",
+        alignItems: "center",
+        cursor: "pointer",
+        marginLeft: "15px"
+    }
 }))
