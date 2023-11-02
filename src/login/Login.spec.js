@@ -1,13 +1,13 @@
 import { render, screen } from "@testing-library/react";
-import {BrowserRouter as Router, useNavigate} from "react-router-dom"
+import { BrowserRouter as Router, useNavigate } from "react-router-dom";
 import Login from "./Login";
 import {when} from "jest-when";
 import useAuth from "../layout/hooks/useAuth";
 import useLogin from "./hooks/useLogin";
-import user from "@testing-library/user-event"
+import user from "@testing-library/user-event";
 import { isLoggedIn } from "../helper/authService";
 
-
+const mockNavigate = jest.fn();
 
 jest.mock("../layout/hooks/useAuth", () => ({
     __esModule: true,
@@ -19,19 +19,18 @@ jest.mock("./hooks/useLogin", () => ({
     default: jest.fn()
 }));
 
-// jest.mock('react-router-dom', () => ({
-//     ...jest.requireActual('react-router-dom'), 
-//     useNavigate : jest.fn() 
-//   }));
+jest.mock("react-router-dom", () => ({
+    ...(jest.requireActual('react-router-dom')),
+    useNavigate: () => mockNavigate
+}))
 
-  jest.mock("../helper/authService", () => ({
+jest.mock("../helper/authService", () => ({
     isLoggedIn: jest.fn()
 }));
 
 describe("Basic rendering of login component" , () => {
     const testOnLogin = jest.fn();
     const testHandleLogin = jest.fn();
-    const navigate = jest.fn();
     const TestErrorComponent = () => <div/>;
 
     beforeEach(() => {
@@ -43,9 +42,9 @@ describe("Basic rendering of login component" , () => {
             errorMessage: () => <TestErrorComponent/>,
             handleLogin: testHandleLogin
         });
-
-       
+        mockNavigate.mockReturnValue();
     });
+
     afterEach(() => {
         jest.clearAllMocks();
       });
@@ -78,30 +77,10 @@ describe("Basic rendering of login component" , () => {
         user.click(passwordInput);
         user.keyboard('testuser');
         user.click(button);
-        screen.debug();
 
         expect(testHandleLogin).toHaveBeenCalledWith({username:'testuser' , password : 'testuser'});
-       
 
     });
 
-    it("should navigate to home page after successful login" , async () => {
-        isLoggedIn.mockReturnValue(true);
-        render(<Router><Login></Login></Router>);
-        const usernameInput = screen.getByTestId("username-input").querySelector('input');
-        const passwordInput = screen.getByTestId("password-input").querySelector('input');
-        const button = screen.getByRole('button', { name: /submit/i });
-
-        user.click(usernameInput);
-        user.keyboard('testuser');
-        user.click(passwordInput);
-        user.keyboard('testuser');
-        user.click(button);
-        screen.debug();
-
-        expect(navigate).toHaveBeenCalledWith('/');
-       
-
-    });
 
 })

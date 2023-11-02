@@ -7,4 +7,13 @@ describe("Basic rendering of header component" , () => {
         
         expect(screen.getByText("PulpTicket"))
     })
+
+    it("should render the link to the home page" , () => {
+        render(<BrowserRouter><Header/></BrowserRouter>);
+        const link = screen.getByRole('link',{
+            name : /pulpticket/i
+        })
+
+        expect(link).toHaveAttribute('href' , '/');
+    })
 })

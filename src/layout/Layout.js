@@ -10,7 +10,7 @@ const Layout = () => {
     const location = useLocation();
     
     // Define an array of public routes
-    const publicRoutes = ['/movies', '/login'];
+    const publicRoutes = ['/movies', '/login' , '/signup'];
 
     // Check if the current location matches a public route
     const isPublicRoute = publicRoutes.includes(location.pathname);

@@ -9,3 +9,29 @@ fileignoreconfig:
 - filename: src/movieList/MovieList.js
   checksum: 565291cb1b8c7ee641d21484efdc4c46cee28040ae2dfb8dbc34b3d181fd3c44
 version: ""
+fileignoreconfig:
+- filename: src/show/hooks/useShow.spec.js
+  checksum: 82ec14b7ddc3f06707cd53941abecce961310b1677e2481208cad34144028018
+- filename: src/show/hooks/useMovie.spec.js
+  checksum: cf4bcdff338658b32870dd111eeb9d89a65a0cc75031cee3312f47a991f0fd7a
+- filename: src/show/Show.spec.js
+  checksum: 9207b81d9ae337485d3da29c32234ec21e4ef651154b3a494df9c7c65ead402e
+- filename: yarn.lock
+  checksum: f55cb47912fd18f89c92987e9bf5dbe0fdf07505ac0a94db51976c6f34be53de
+- filename: src/helper/authService.js
+  checksum: 3e97d46df5bdf4f17dfddbaa664b5e2c5acf436c1d5390c5b4559af077b3cc5f
+- filename: src/show/Show.js
+  checksum: e27bd1075da03f37876b80c096b96322d1c32e0763733406bb1c6c9d29dbf05c
+- filename: src/helper/authService.spec.js
+  checksum: 041627c3719b7bc52423e806c94bb5fba492a0f9f4b0231048d55ca094ab3983
+- filename: src/layout/hooks/useAuth.spec.js
+  checksum: 82f5848965002d82d8a6e28baae8a291b139f0da5ab0e07145b4b13b361a132c
+- filename: src/login/Login.js
+  checksum: 2fbe38171d4cfdffacf6a5f58e955046bc4ed423e81f89cba2d94b1091a34586
+- filename: src/login/Login.spec.js
+  checksum: 1943421b1adaa2b6ef79919d4529e4162371a161e48e9674b26df5486d8f6e7b
+- filename: src/login/hooks/useLogin.spec.js
+  checksum: 3f238783413a98a628b121c6c796fc1a3e35797cef25a818d5bd3c882a4a0e88
+- filename: src/movieList/MovieList.js
+  checksum: 109c2079bf18e7329a6d8c9640296ebe8e8ab2fc6d613f6b12a0ef79491b9a53
+version: ""

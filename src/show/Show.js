@@ -1,5 +1,5 @@
 import useMovie from './hooks/useMovie';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useParams , useNavigate} from 'react-router-dom';
 import {
     Backdrop,
     Button,
@@ -13,13 +13,15 @@ import {
 } from "@material-ui/core";
 import useShow from './hooks/useShow';
 import showStyles from './styles/showStyles';
+import ShowDateNavigation from './ShowDateNavigation';
+
 const Show = () => {
     let location = useLocation();
+    const navigate = useNavigate();
     const { movieId, date } = useParams();
     const { movie } = useMovie(movieId);
-    const { showsByScreen, showsLoading } = useShow(movieId, date);
+    const { showsByScreen, showsLoading , todayDate} = useShow(movieId, date);
     const classes = showStyles();
-
 
     return (
         <>
@@ -40,6 +42,7 @@ const Show = () => {
 
 
             <h2>Show List</h2>
+            <ShowDateNavigation movieId={movieId} selectedDate={date} navigate = {navigate} />
             {showsLoading ? (<Typography>Shows Loading ...</Typography>) :
              ( <List className={classes.showList}>
                 

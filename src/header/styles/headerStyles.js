@@ -9,6 +9,12 @@ export default makeStyles((theme) => ({
         justifyContent: 'space-between',
         alignItems: 'center',
       },
+      headerLink: {
+        color: theme.palette.primary.contrastText,
+        display: 'flex',
+        justifyContent: "flex-start",
+        textDecoration: 'none'
+    },
       logo: {
         height: '50px',
       },

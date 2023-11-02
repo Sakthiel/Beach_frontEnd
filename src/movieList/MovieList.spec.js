@@ -3,7 +3,7 @@ import MovieList from './MovieList';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 import { BrowserRouter } from 'react-router-dom';
-
+import moment from 'moment';
 const movieList =  [{
     id: "tt12345",
     name: "hereditary",
@@ -34,8 +34,8 @@ describe("Basic rendering of the MovieList Page", () => {
     it("should render the header", () => {
         server.listen();
         render(<MovieList />);
-        const header = screen.getByRole('heading');
-        expect(header).toHaveTextContent("MovieList Page");
+        const header = screen.getByText('Movies');
+        expect(header).toBeInTheDocument();
         server.resetHandlers();
     });
 
@@ -59,12 +59,12 @@ describe("Basic rendering of the MovieList Page", () => {
             
     });
 
-    it("renders the link to shows page" , async () => {
+    it("renders the link to shows page with today date" , async () => {
         server.listen();
         render(<BrowserRouter><MovieList/></BrowserRouter>);
         const link = await screen.findByRole('link');
-
-        expect(link).toHaveAttribute('href' , `/show/${movieList[0].id}/2023-10-02`)
+        const todayDate = moment().format("YYYY-MM-DD");
+        expect(link).toHaveAttribute('href' , `/show/${movieList[0].id}/${todayDate}`)
 
     })
 })

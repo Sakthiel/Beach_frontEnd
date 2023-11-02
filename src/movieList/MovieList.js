@@ -4,10 +4,12 @@ import styles from './styles/movieListStyles';
 import {Link} from "react-router-dom";
 import moment from "moment";
 import { authHeader } from "../helper/authService";
+import { Typography } from "@material-ui/core";
 const MovieList = () => {
     const [movies , setMovies] = useState([]);
     const classes = styles() ;
-    const todayDate = moment().format("YYYY-MM-DD")
+    const todayDate = moment().format("YYYY-MM-DD");
+    console.log(typeof(todayDate));
     useEffect(() => {
         async function fetchData() {
             try{
@@ -25,15 +27,15 @@ const MovieList = () => {
 
     return(
     <div>
-         <h1>
-            MovieList Page
-        </h1>
+            <Typography variant="h3" align="center" gutterBottom>
+                Movies
+            </Typography>
     <div className={classes.movieList}>
         {console.log(movies)}
     {
         movies.map((item,index) => {
             return(
-                <Link key = {index} to = {{pathname : `/show/${item.id}/2023-10-02` } } className= {classes.link} >
+                <Link key = {index} to = {{pathname : `/show/${item.id}/${todayDate}` } } className= {classes.link} >
                 <div  className={classes.card}>
                     <img src={item.poster} alt = "poster" style={{width : '100%' , height: '80%'}}></img>
                     <h4>{item.name}</h4>

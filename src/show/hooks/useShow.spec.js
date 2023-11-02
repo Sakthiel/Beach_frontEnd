@@ -22,7 +22,7 @@ describe("Basic functionality", () => {
             Authorization: 'Basic testUsername:testPassword'
         }
     };
-    const showsData = [
+    const showsData = {data : [
       
         {
             "id": 9,
@@ -47,16 +47,17 @@ describe("Basic functionality", () => {
                 "poster": "https://m.media-amazon.com/images/M/MV5BMjI0MDMzNTQ0M15BMl5BanBnXkFtZTgwMTM5NzM3NDM@._V1_.jpg"
             }
         }
-    ]
+    ]}
     beforeEach(() => {
-        showDate = moment("2023-10-11", "YYYY-MM-DD");
-        movieId = "ttbd2123"
+       showDate = "2023-10-02";
+         movieId = "tt1396484";
         authHeader.mockReturnValue(testConfig);
         when(axios.get)
-            .calledWith(`http://localhost:8080/${movieId}/${showDate}`, testConfig)
+            .calledWith(`http://localhost:8080/shows/${movieId}/${showDate}`, testConfig)
             .mockResolvedValue(showsData);
     });
     it("Should initialize the hook with empty shows and loading", () => {
+        
         const { result } = renderHook(() => useShow(movieId, showDate));
 
         const { shows, showsLoading } = result.current;
@@ -71,7 +72,7 @@ describe("Basic functionality", () => {
         await waitForNextUpdate();
         const { shows, showsLoading } = result.current;
 
-        expect(shows).toEqual(showsData);
+        expect(shows).toEqual(showsData.data);
         expect(showsLoading).toBe(false);
 
     });

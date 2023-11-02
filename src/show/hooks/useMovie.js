@@ -7,7 +7,6 @@ const useMovie= (movieId) => {
     useEffect(() => {
         async function fetchData() {
             try {
-                console.log(authHeader());
                 const response = await axios.get(`http://localhost:8080/movies/${movieId}`, authHeader());
                 console.log(response.data);
                 setMovie(response.data);
