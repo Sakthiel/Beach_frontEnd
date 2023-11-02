@@ -7,10 +7,6 @@ import useSignUp from "./hooks/useSignUp";
 import user from "@testing-library/user-event";
 import axios from "axios";
 
-// jest.mock("./hooks/useSignUp", () => ({
-//   __esModule: true,
-//   default: jest.fn()
-// }));
 
 jest.mock("./services/formValidationServices", () => ({
   ...(jest.requireActual('./services/formValidationServices')),
@@ -39,15 +35,7 @@ describe("Basic functionality of signup component" , () => {
 
     beforeEach(() => {
    
-      // useSignUp.mockReturnValue({
-      //   handleSignUp : testHandleSignUp,
-      //   errorMessage: () => <TestErrorComponent/>,
-      //   initialValues : testInitialValues,
-      //   showPassword : false,
-      //   handleShowPassword : jest.fn(),
-      //   showConfirmPassword : false,
-      //   handleShowConfirmPassword : jest.fn()
-      // })
+ 
       checkUsernameExists.mockReturnValue(true);
     });
 

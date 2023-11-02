@@ -44,9 +44,36 @@ describe("Basic functionality of the component" , () => {
         const movieId = "kdf123"
         render(<Router><ShowDateNavigation navigate={testNavigate} movieId = {movieId} selectedDate={new Date()}/></Router>);
 
-        const backwardButton = screen.getByRole('button' , {name : 'backward'});
+       
         const forwardButton = screen.getByRole('button' , {name : 'forward'});
         user.click(forwardButton);
+        
+        expect(testNavigate).toHaveBeenCalledWith(`/show/${movieId}/${formattedDate}`); 
+    });
+    it("should call navigate with previous date when backward icon clicked" , () => {
+        const testNavigate = jest.fn();
+        const currentDateCopy = new Date();
+        currentDateCopy.setDate(currentDateCopy.getDate() - 1); 
+        const formattedDate = currentDateCopy.toISOString().split('T')[0];
+        const movieId = "kdf123"
+        render(<Router><ShowDateNavigation navigate={testNavigate} movieId = {movieId} selectedDate={new Date()}/></Router>);
+
+        const backwardButton = screen.getByRole('button' , {name : 'backward'});
+       
+        user.click(backwardButton);
+        
+        expect(testNavigate).toHaveBeenCalledWith(`/show/${movieId}/${formattedDate}`); 
+    });
+    it("should call navigate with selected date in given range" , () => {
+        const testNavigate = jest.fn();
+        const currentDateCopy = new Date();
+        const formattedDate = currentDateCopy.toISOString().split('T')[0];
+        const movieId = "kdf123"
+        render(<Router><ShowDateNavigation navigate={testNavigate} movieId = {movieId} selectedDate={new Date()}/></Router>);
+
+        const button = screen.getByText(currentDateCopy.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
+       
+        user.click(button);
         
         expect(testNavigate).toHaveBeenCalledWith(`/show/${movieId}/${formattedDate}`); 
     });

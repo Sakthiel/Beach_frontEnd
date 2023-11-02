@@ -35,3 +35,25 @@ fileignoreconfig:
 - filename: src/movieList/MovieList.js
   checksum: 109c2079bf18e7329a6d8c9640296ebe8e8ab2fc6d613f6b12a0ef79491b9a53
 version: ""
+
+
+fileignoreconfig:
+- filename: yarn.lock
+  checksum: 3cbc5594cdf3604ecf32bba780db7c4e096a66eae4f6be06ea71d5ffe05176de
+- filename: src/show/ShowDateNavigation.js
+  checksum: bf28810a78ad05ed2bccad3ac5818dcbed7c32492fe80ba4cb341bda4cde4153
+- filename: src/signup/hooks/useSignUp.spec.js
+  checksum: 91a399d54b012595c8365691196967148cf4cb76fe8a48e64af19a21575a8090
+- filename: src/signup/services/formValidationServices.js
+  checksum: 2bb9509899480a6ed9f2b5f4a1fd05911374a286e8e1bca5f2b8214727c77712
+- filename: src/signup/hooks/useSignUp.js
+  checksum: 4fa560189d67edd12dfe1bc8a2942e027c8c51867bb7dd8682d7c64d311f6331
+- filename: src/login/Login.js
+  checksum: 843f586dab81416994d292e186361c57cadcc207eb124e8547a24fdf6eedc6fa
+- filename: src/movieList/MovieList.js
+  checksum: ee2d45c2b4c4ab8d7ecd7bade3daefdbeb35f9e8250ac7f6e115e6c2513cfdfe
+- filename: src/signup/SignUp.spec.js
+  checksum: 861c34b0dbc719058d89eaf4d7c23546292a56a873fbef603852b2f075973ceb
+- filename: src/signup/SignUp.js
+  checksum: f5e396135501ed68a5ec82429ed9a61e775bc002100aa4590cc85f8e474d1824
+version: ""
